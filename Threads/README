@@ -1,0 +1,12 @@
+Project 1: Threads
+Introduction
+Welcome to Project 1: Threads! This assignment aims to extend the functionality of a minimally functional thread system provided to gain a better understanding of synchronization problems. You'll be working primarily in the threads directory, with some work in the devices directory.
+
+Alarm Clock
+Reimplement timer_sleep() to avoid busy waiting and improve efficiency.
+
+Priority Scheduling
+Implement priority scheduling where threads with higher priority preempt lower-priority threads.
+
+Priority Donation
+Implement priority donation to prevent priority inversion and ensure fairness in thread scheduling.
