@@ -1,0 +1,205 @@
+                        +--------------------+
+                        |        CS 439      |
+                        |  PROJECT 0: SHELL  |
+                        |   DESIGN DOCUMENT  |
+                        +--------------------+
+
+The questions in this design document should reflect the design of the code you
+wrote for the project.  Your grade will reflect both the quality of your answer
+in this document and the quality of the design implementation in your code.  You
+may receive partial credit for answering questions for parts of the project that
+you did not get to implement, but you must indicate in your answer that there is
+no corresponding implementation, or you will not receive any credit.
+
+For each question, you should include both the name of the file(s), function
+name(s), and the line numbers where the relevant code may be found---both the
+code that answers the question directly and any function that you refer to in
+your answer.
+
+These design documents will be completed and submitted as a group.  Please use
+this document as a guide for design and discuss the questions and their
+potential answers prior to beginning implementation.
+
+When you have completed your design document, submit it to the Canvas assignment
+Project 0 Design and Documentation.
+
+***Your submission must be a text file and each line must not extend pat 80
+characters.  In addition, your submission must contain all of the original
+material and not exceed 8,000 characters.  The character count will be measured
+using the Linux command wc.  (Note that rtf files are NOT text files.) 
+
+################
+TEAM INFO
+################
+Name: Rhea Shah
+EID: rjs4665
+CS login: rheashah
+Email: rheajshah@gmail.com
+Unique Number: 52850
+
+Name: Ritu Gupta
+EID: rmg3729
+CS login: rigupta
+Email: ritugupta@utexas.edu
+Unique Number: 52845
+
+Slip Days Used: 1
+
+##############
+Preliminaries
+##############
+(1) If you have any preliminary comments on your submission or notes for
+    the TA, please give them here.  If you did not implement all portions
+    of this project, that should be noted here.
+
+(2) Please cite any offline or online sources you consulted while
+    preparing your submission, other than the Linux documentation,
+    course text, and lecture notes.
+        TAs
+
+##############
+Questions regarding Part 0
+##############
+(1) How many child processes are created when doFib() 
+    begins with an input of 5?  Show the return value for 
+    each child process, numbering the processes beginning 
+    with 0 (the original process) and incrementing for
+    each child process.
+    
+    -fib.c   
+    -doFib()
+    -53-90
+
+    Creates 14 child processes(shown in level order traversal)
+    0: 5
+	1a: 3  1b: 2  
+    2a: 2  2b: 1  2c: 1  2d: 1
+    3a: 1  3b: 1  3c: 1  3d: 0  3e: 1  3f: 0
+    4a: 1  4b: 0
+
+(2) Explain how you communicated the return value of the 
+    child to the parent. What feature of wait() did you use?
+    
+    -fib.c
+    -doFib()
+    -53-90
+
+	 waitpid() to wait for child processes to finish 1st. Then, WEXITSTATUS 
+     to get exit code of child & store it to pass return val to parent. 
+
+##############
+Questions regarding Part 1
+##############
+(1) In the provided utility function Signal(), what does the call to
+  sigaction() do?  Why was sigaction() used instead of signal()?
+    
+    -sigutil.c
+    -signal_action(), sigaction()
+    -18-33
+    
+    sigaction() changes the set action of a process and redirects to the signal
+    handler depending on what it receives. sigaction() used as its more 
+    reliable (portable), more control over signal handling - can signal mask & 
+    add flags.
+
+##############
+Questions regarding Part 2
+##############
+(1) What combination of structs, arrays, and other data structures 
+    did you use to represent a fully-parsed command? Pick another 
+    (reasonable) representation you could have used, and give one advantage 
+    and one disadvantage of the representation you chose.
+
+    Note that you do not need to include concurrent commands in your answer. 
+    Part 2 does not include this advanced shell feature.
+
+    -utcsh.c
+    -parse_command(), get_num_toks(), tokenize_command_line()
+    -34-39, 339-343, 305-313, 222-261
+    
+    Used struct Command. args member is a tokenized string array storing the 
+    command and its args, outputFile points to tgt file (string) for output 
+    redirection, num_tokens (get_num_toks()) stores # of tokens 
+    in command, & num_redirects (get_num_redirects()) stores # of 
+    redirect symbols in command. tokenize_command_line() delimits input string 
+    using whitespace and stores in char** array. 
+    
+    Advantage: adaptable & more members can be added to the struct to store more
+    information about the command. 
+    Disadvantage: array of fixed size to store command args, limiting how many 
+    args a command can have. 
+
+    Could use linked list of tokens. Head of list would be member in Command 
+    struct, & linked list struct would have each node representing a token, 
+    with value of the token held in a char ptr. The struct would contain 
+    another struct, a ptr to next token in list to access each individual 
+    token. 
+
+
+(2) An invalid script file is one which does not contain anything (i.e. 
+    a size zero file). How did you detect and handle this condition?  
+    Describe one other (correct) design that you could have used.
+
+    -utcsh.c
+    -fgets(), get_num_toks(), parse_command(), fgets()
+    -86-109, 305-313, 339-343
+
+    Done through bool var & fgets(). Set bool to true, then run fgets() in 
+    while loop to read input from file. If fgets() true & can read input, 
+    tokenize the line of input, parse through it, & count # tokens. If # 
+    tokens is > 0, script_empty set false. Else, if bool still true, throw 
+    error & exit. Could use stat() & st_size field to determine file size. 
+    If st_size 0, file is empty & throw error. 
+
+
+##############
+Questions regarding Part 3
+##############
+(1) Describe how your implementation ensures that concurrent
+    commands are executed concurrently instead of one after 
+    another.
+
+    -utcsh.c
+    -main(), tokenize_command_line_for_concurrency(), tokenize_command_line(), 
+    exec_external_command(), eval()
+    -96-118, 265-301, 222-261, 430-582, 363-369
+
+    In main, store commands delimited by "&" 
+    using tokenize_command_line_for_concurrency() in a String array. Loop 
+    through each cmd & tokenize again using tokenize_command_line(), then call 
+    eval() on cmd currently being processed. To concurrently execute external 
+    cmds, in exec_external_cmd(), 1st fork the child, call execv(). In main() 
+    after for loop calling eval on each cmd is over, run another for loop 
+    calling wait() on all the above processes, executing them when they have 
+    all finished being run -> executing concurrently.
+
+(2) One potential strategy for redirecting output is to run 
+    the following code:
+
+  ```
+  FILE* output = fopen(filename, "w");
+  stdout = output;
+  stderr = output;
+  ```
+
+  This causes everything that would normally be written to 
+  `stdout` to instead be written to the file described by 
+  filename. Unfortunately, this strategy does not work for 
+  output redirection in utcsh. More generally, it does not
+  work any time fork-and-exec is used and we want to 
+  redirect the output of the child process.
+
+  Explain why this technique does not work when used in 
+  conjunction with fork-and-exec, and why the dup2() 
+  technique does not suffer the same issue.
+
+    -utcsh.c
+    -exec_external_command()
+    -430-516
+
+    When fork() makes new process -> gets file descriptors from parent. 
+    File descriptors are distinct for each process, so when stdout and stderr 
+    altered in child, doesn’t affect parent or concurrent processes -> won’t 
+    be written to specified file. dup2() works with output redirection as it 
+    duplicates file descriptor for output file onto stdout & stderr - matches 
+    for child & output file.

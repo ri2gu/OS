@@ -1,0 +1,188 @@
+Project 0 Pair Programming Log
+Use this log to record the dates and times you work on your project, 
+which team members were working on the project, and who was driving.  
+
+
+Wednesday, 8/30/2023
+4:15 - 6:15pm
+Rhea & Ritu - 2 hours
+
+Rhea & Ritu - 1 hour
+Gitlab + environment setup
+
+Ritu - 30 mins
+Working on doFib()
+	
+Rhea - 30 mins
+Working on doFib()
+	
+____________________________
+Thursday, 8/31/2023
+12:15 - 3:00pm
+Rhea & Ritu - 2.75 hours
+
+Ritu - 30 mins
+Working on doFib()
+
+Rhea - 30 mins
+Finished doFib()
+
+Rhea & Ritu - 1.75 hours
+Office hours + reading part 1
+	
+____________________________
+Friday, 9/1/2023
+4 - 6pm
+Rhea & Ritu - 2 hours
+
+Rhea & Ritu - 30 mins
+Finishing reflections doc
+
+Rhea - 30 mins
+Finished 1.2
+
+Ritu - 30 mins
+Working on 1.3
+	
+
+____________________________
+Monday, 9/4/2023
+4:00 - 7:00
+Rhea & Ritu - 3 hours
+
+Rhea & Ritu -30 mins
+Reading Project Specs + Office Hours
+	
+Rhea - 30 mins
+Finished 1.3
+	
+Ritu & Rhea - 30 mins
+Reading Project Specs + Design
+	
+Ritu - 30 mins
+Working on Part 2.2
+	
+Rhea - 30 mins
+Part 2.2
+	
+Ritu - 30 mins
+Working on Part 2.3
+	
+____________________________
+Tuesday, 9/5/2023
+4:05 - 5:35
+Rhea & Ritu - 1.5 hours
+
+Rhea & Ritu - 30 mins
+Part 2.3
+	
+Rhea - 30 mins
+Part 2.3
+
+Ritu - 30 mins
+Working on part 2.4
+	
+____________________________
+Wednesday, 9/6/2023
+1:00 - 4:30
+Rhea & Ritu - 3.5 hours
+
+Rhea & Ritu - 30 mins
+Reading project specs + Design
+	
+Rhea - 30 mins
+Working on Part 2.5
+	
+Ritu - 30 mins
+Part 2.5
+	
+Rhea - 30 mins
+Part 2.5
+	
+Ritu - 30 mins
+Part 2.5
+	
+Ritu & Rhea - 30 mins
+Working on Design Doc 
+	
+Rhea - 30 mins
+Working on part 2.6
+	
+____________________________
+Thursday, 9/7/2023
+1:00 - 6:30
+Rhea & Ritu - 5.5 hours
+
+Rhea & Ritu - 30 mins
+2.6
+	
+Rhea - 30 mins
+2.6
+	
+Ritu - 30 mins
+2.6
+	
+Rhea & Ritu - 1 hour
+Office hours + Reading Part 3
+	
+Rhea - 30 mins
+Part 3.1
+	
+Ritu - 30 mins
+3.1
+	
+Rhea - 30 mins
+3.2
+	
+Ritu - 30 mins
+3.2
+	
+Rhea - 30 mins
+3.3
+	
+Ritu - 30 mins
+3.3
+	
+____________________________
+Friday, 9/8/2023
+12:00 - 5:30
+Rhea & Ritu - 5.5 hours
+
+Rhea & Ritu - 30 mins
+Design Doc
+	
+Rhea - 30 mins
+3.3
+	
+Ritu - 30 mins
+Debugging test 31
+	
+Rhea - 30 mins
+Test 31
+	
+Ritu - 30 mins
+Debugging test 32
+	
+Rhea - 30 mins
+Test 32
+	
+Ritu - 30 mins
+Test 32
+
+Rhea - 30 mins
+Test 32
+	
+Ritu - 30 mins
+Test 32
+	
+Rhea - 30 mins
+Cleaning up code
+	
+Rhea & Ritu - 30 mins
+Cleaning up design doc
+
+____________________________
+Saturday, 9/9/2023
+12:00 - 12:30
+Rhea - 30 mins hours
+Fixed test 32
